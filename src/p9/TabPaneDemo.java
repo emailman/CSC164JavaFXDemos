@@ -6,13 +6,12 @@ package p9;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
 import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class TabPaneDemo extends Application {
 
@@ -62,5 +61,14 @@ public class TabPaneDemo extends Application {
         stage.setWidth(600);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @Override
+    public void stop() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Window Closed");
+        alert.setHeaderText(null);
+        alert.setContentText("So long and thanks for all the fish");
+        alert.showAndWait();
     }
 }
