@@ -35,21 +35,23 @@ public class TabPaneDemo2 extends Application {
 
         // Define the text fields
 
-        // First name
-        TextField tfFirstName = new TextField();
+        // Length
+        TextField tfLength = new TextField();
 
-        // Middle Initial
+        // Width
         TextField tfMI = new TextField();
 
-        // Last name
+        // Perimeter
         TextField tfLastName = new TextField();
 
+        // Area
+        TextField tfArea = new TextField();
+
         // Place labels and text fields in the pane, one row at a time
-        rectangle_grid.addRow(0, new Label("First Name:"), tfFirstName);
-
-        rectangle_grid.addRow(1, new Label("MI:"), tfMI);
-
-        rectangle_grid.addRow(2, new Label("Last Name:"), tfLastName);
+        rectangle_grid.addRow(0, new Label("Length:"), tfLength);
+        rectangle_grid.addRow(1, new Label("Width:"), tfMI);
+        rectangle_grid.addRow(2, new Label("Perimeter:"), tfArea);
+        rectangle_grid.addRow(3, new Label("Area:"), tfArea);
 
         // Add the grid to the tab
         rectangle_tab.setContent(rectangle_grid);
