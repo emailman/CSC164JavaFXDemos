@@ -4,6 +4,7 @@ package p10;
 // Add a grid layout to a tab
 
 import javafx.application.Application;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -39,31 +40,61 @@ public class TabPaneDemo2 extends Application {
         TextField tfLength = new TextField();
 
         // Width
-        TextField tfMI = new TextField();
+        TextField tfWidth = new TextField();
 
         // Perimeter
-        TextField tfLastName = new TextField();
+        TextField tfPerimeter = new TextField();
+        tfPerimeter.setEditable(false);
 
         // Area
         TextField tfArea = new TextField();
+        tfArea.setEditable(false);
 
         // Place labels and text fields in the pane, one row at a time
         rectangle_grid.addRow(0, new Label("Length:"), tfLength);
-        rectangle_grid.addRow(1, new Label("Width:"), tfMI);
-        rectangle_grid.addRow(2, new Label("Perimeter:"), tfArea);
+        rectangle_grid.addRow(1, new Label("Width:"), tfWidth);
+        rectangle_grid.addRow(2, new Label("Perimeter:"), tfPerimeter);
         rectangle_grid.addRow(3, new Label("Area:"), tfArea);
+
+        // Add a button
+        Button btCalcRectangle = new Button("CALCULATE");
+        rectangle_grid.add(btCalcRectangle, 0, 4, 2, 1);
+        GridPane.setHalignment(btCalcRectangle, HPos.CENTER);
 
         // Add the grid to the tab
         rectangle_tab.setContent(rectangle_grid);
 
+        // Define a grid for rectangles
+        GridPane circle_grid = new GridPane();
+        circle_grid.setPadding(new Insets(20, 20, 20, 20));
+        circle_grid.setHgap(10);
+        circle_grid.setVgap(10);
 
+        // Define the text fields
 
-        // Define a label with the help message
-        Label help_dia = new Label("Help Message: Buy low and sell high.");
+        // Radius
+        TextField tfRadius = new TextField();
 
-        // Add the label to the help tab
-        circle_tab.setContent(help_dia);
+        // Perimeter
+        TextField tfCircumference = new TextField();
+        tfCircumference.setEditable(false);
 
+        // Area
+        TextField tfCircleArea = new TextField();
+        tfCircleArea.setEditable(false);
+
+        // Place labels and text fields in the pane, one row at a time
+        circle_grid.addRow(0, new Label("Radius:"), tfRadius);
+        circle_grid.addRow(1, new Label("Perimeter:"), tfCircumference);
+        circle_grid.addRow(2, new Label("Area:"), tfCircleArea);
+
+        // Add a button
+        Button btCalcCircle = new Button("CALCULATE");
+        circle_grid.add(btCalcCircle, 0, 4, 2, 1);
+        GridPane.setHalignment(btCalcCircle, HPos.CENTER);
+
+        // Add the grid to the tab
+        circle_tab.setContent(circle_grid);
 
         // Add both tabs to the tab pane
         tp.getTabs().addAll(rectangle_tab, circle_tab);
@@ -71,11 +102,8 @@ public class TabPaneDemo2 extends Application {
         // Setup the scene and the stage
         Scene scene = new Scene(tp);
         stage.setTitle("Tab Pane Demo 2");
-        stage.setX(400);
-        stage.setY(100);
-        stage.setHeight(500);
-        stage.setWidth(600);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 
