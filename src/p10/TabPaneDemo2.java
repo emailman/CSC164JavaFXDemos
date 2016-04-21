@@ -64,7 +64,7 @@ public class TabPaneDemo2 extends Application {
         // Add the grid to the tab
         rectangle_tab.setContent(rectangle_grid);
 
-        // Define a grid for rectangles
+        // Define a grid for circles
         GridPane circle_grid = new GridPane();
         circle_grid.setPadding(new Insets(20, 20, 20, 20));
         circle_grid.setHgap(10);
