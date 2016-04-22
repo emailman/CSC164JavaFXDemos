@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 
 public class TabPaneDemo2 extends Application {
 
-
     @Override
     public void start(Stage stage) {
 
@@ -28,13 +27,38 @@ public class TabPaneDemo2 extends Application {
         // Create a tab for circles
         Tab circle_tab = new Tab("Circle");
 
+        // Make a rectangle grid and add it to the rectangle tab
+        rectangle_tab.setContent(makeRectangleGrid());
+
+        // Add the grid to the tab
+        circle_tab.setContent(makeCircleGrid());
+
+        // Add both tabs to the tab pane
+        tp.getTabs().addAll(rectangle_tab, circle_tab);
+
+        // Setup the scene and the stage
+        Scene scene = new Scene(tp);
+        stage.setTitle("Tab Pane Demo 2");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    @Override
+    public void stop() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Window Closed");
+        alert.setHeaderText(null);
+        alert.setContentText("So long and thanks for all the fish");
+        alert.showAndWait();
+    }
+
+    private GridPane makeRectangleGrid() {
         // Define a grid for rectangles
         GridPane rectangle_grid = new GridPane();
         rectangle_grid.setPadding(new Insets(20, 20, 20, 20));
         rectangle_grid.setHgap(10);
         rectangle_grid.setVgap(10);
-
-        // Define the text fields
 
         // Length
         TextField tfLength = new TextField();
@@ -61,16 +85,15 @@ public class TabPaneDemo2 extends Application {
         rectangle_grid.add(btCalcRectangle, 0, 4, 2, 1);
         GridPane.setHalignment(btCalcRectangle, HPos.CENTER);
 
-        // Add the grid to the tab
-        rectangle_tab.setContent(rectangle_grid);
+        return rectangle_grid;
+    }
 
+    private GridPane makeCircleGrid() {
         // Define a grid for circles
         GridPane circle_grid = new GridPane();
         circle_grid.setPadding(new Insets(20, 20, 20, 20));
         circle_grid.setHgap(10);
         circle_grid.setVgap(10);
-
-        // Define the text fields
 
         // Radius
         TextField tfRadius = new TextField();
@@ -93,26 +116,6 @@ public class TabPaneDemo2 extends Application {
         circle_grid.add(btCalcCircle, 0, 4, 2, 1);
         GridPane.setHalignment(btCalcCircle, HPos.CENTER);
 
-        // Add the grid to the tab
-        circle_tab.setContent(circle_grid);
-
-        // Add both tabs to the tab pane
-        tp.getTabs().addAll(rectangle_tab, circle_tab);
-
-        // Setup the scene and the stage
-        Scene scene = new Scene(tp);
-        stage.setTitle("Tab Pane Demo 2");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
-    }
-
-    @Override
-    public void stop() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Window Closed");
-        alert.setHeaderText(null);
-        alert.setContentText("So long and thanks for all the fish");
-        alert.showAndWait();
+        return circle_grid;
     }
 }
